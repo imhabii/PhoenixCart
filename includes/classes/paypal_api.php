@@ -88,7 +88,7 @@ class paypal_api {
       ];
     }
 
-    curl_close($curl);
+    unset($curl);
 
     return $result;
   }

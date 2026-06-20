@@ -68,7 +68,9 @@
 // set the session cookie parameters
   Cookie::save_session_parameters();
 
-  @ini_set('session.use_only_cookies', (SESSION_FORCE_COOKIE_USE == 'True') ? 1 : 0);
+  if (PHP_VERSION_ID < 80400) {
+    @ini_set('session.use_only_cookies', (SESSION_FORCE_COOKIE_USE == 'True') ? 1 : 0);
+  }
 
   Session::start();
 
