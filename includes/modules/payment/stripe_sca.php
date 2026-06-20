@@ -588,7 +588,7 @@ EOD;
 
       $result = curl_exec($curl);
 
-      curl_close($curl);
+      unset($curl);
 
       return $result;
     }

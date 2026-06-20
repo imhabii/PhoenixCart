@@ -185,7 +185,7 @@ class ImageResize
             throw new ImageResizeException('Could not load image');
         }
 
-        finfo_close($finfo);
+        unset($finfo);
 
         return $this->resize($this->getSourceWidth(), $this->getSourceHeight());
     }
@@ -404,7 +404,7 @@ class ImageResize
             chmod($filename, $permissions);
         }
 
-        imagedestroy($dest_image);
+        unset($dest_image);
 
         return $this;
     }

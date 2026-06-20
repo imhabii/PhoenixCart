@@ -25,7 +25,7 @@
      * @param boolean $tokenize
      */
     public function __construct(string $name, string $action,
-      string $method = 'post', array $parameters = [], bool $tokenize = null)
+      string $method = 'post', array $parameters = [], ?bool $tokenize = null)
     {
       parent::__construct($name, [
         'action' => $action,
@@ -79,7 +79,7 @@
      * Add the session ID to the values to be hidden.
      */
     public function hide_session_id() {
-      if (Session::is_started() && !Text::is_empty($GLOBALS['SID'] ?? SID)) {
+      if (Session::is_started() && !Text::is_empty($GLOBALS['SID'] ?? '')) {
         $this->hide(session_name(), session_id());
       }
 
