@@ -17,9 +17,7 @@
   Cookie::save_session_parameters();
 
   if ( SESSION_FORCE_COOKIE_USE == 'False' ) {
-    if (PHP_VERSION_ID < 80400) {
-      @ini_set('session.use_only_cookies', 0);
-    }
+    @ini_set('session.use_only_cookies', 0);
 
 // set the session ID if it exists in the request parameters
     Session::request_id();
@@ -28,9 +26,7 @@
 // start the session
   $session_started = false;
   if (SESSION_FORCE_COOKIE_USE == 'True') {
-    if (PHP_VERSION_ID < 80400) {
-      @ini_set('session.use_only_cookies', 1);
-    }
+    @ini_set('session.use_only_cookies', 1);
 
     Cookie::save('cookie_test', 'please_accept_for_session');
 
@@ -68,7 +64,4 @@
   }
 
 // set SID once, even if empty
-  $SID = '';
-  if (Session::is_started() && !isset($_COOKIE[session_name()]) && session_id() !== '') {
-    $SID = session_name() . '=' . session_id();
-  }
+  $SID = (! empty(session_id()) ? session_name() . '=' . session_id() : '');
