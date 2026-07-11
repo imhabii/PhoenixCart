@@ -29,6 +29,12 @@ EOSQL
 
       $this->data['phoenix'] = ['version' => Versions::get('Phoenix')];
 
+// 2026-07-11: Report the imhabii build separately from the upstream PhoenixCart version.
+      $imhabii_version_file = DIR_FS_CATALOG . 'includes/imhabii_version.php';
+      if (is_file($imhabii_version_file)) {
+        $this->data['imhabii'] = ['version' => trim(file_get_contents($imhabii_version_file))];
+      }
+
       $this->data['system'] = [
         'date' => date('Y-m-d H:i:s O T'),
         'os' => PHP_OS,
