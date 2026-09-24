@@ -70,8 +70,8 @@
      * @param string $name
      * @param string $value
      */
-    public function hide(string $name, string $value) {
-      $this->stash[$name] = $value;
+    public function hide(string $name, ?string $value = '') {
+      $this->stash[$name] = (string)$value;
       return $this;
     }
 

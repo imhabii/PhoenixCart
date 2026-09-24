@@ -25,7 +25,7 @@
       <div class="tab-pane fade show active" id="section_customer_details" role="tabpanel">
         <?php
         echo (new Form('customers', $Admin->link('customers.php')->retain_query_except()->set_parameter('action', 'update'), 'post'))
-      ->hide('default_address_id', $customer_data->get('default_address_id', $customer_details));
+      ->hide('default_address_id', (string)($customer_data->get('default_address_id', $customer_details) ?? ''));
 
         echo '<div class="row">';
           $cwd = getcwd();
